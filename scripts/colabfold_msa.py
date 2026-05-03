@@ -49,7 +49,7 @@ class A3MProcessor:
 
     def _read_a3m_file(self) -> str:
         """Read A3M file content."""
-        return self.a3m_file.read_text()
+        return self.a3m_file.read_text(encoding="utf-8")
 
     def _parse_header(self) -> Tuple[List[str], Dict[str, Tuple[int, int]]]:
         """Parse A3M header to get chain information."""
