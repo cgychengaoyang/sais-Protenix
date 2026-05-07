@@ -21,6 +21,7 @@ import pandas as pd
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
+from my_01_study.utils.root_utils import root_path_02
 from protenix.data.data_pipeline import DataPipeline
 from protenix.utils.file_io import dump_gzip_pickle
 
@@ -156,28 +157,38 @@ if __name__ == "__main__":
         "-i",
         "--input_path",
         type=Path,
-        default=None,
+        # default=None,
+        default=f'{root_path_02}/'
+                # 'Nucleic_protein_res4.0/cifs_Nucleic_and_protein',
+                'Nucleic_protein_res4.0/cifs_Nucleic_only',
         help="Path to the input directory containing MMCIF files or a .txt file listing MMCIF file paths.",
     )
     parser.add_argument(
         "-o",
         "--output_csv",
         type=Path,
-        default=None,
+        # default=None,
+        default=f'{root_path_02}/'
+                # 'train_mmcif_csv/cifs_Nucleic_and_protein',
+                'train_mmcif_csv/cifs_Nucleic_only',
         help="Path to the output CSV file where indices will be saved.",
     )
     parser.add_argument(
         "-b",
         "--bio_output_dir",
         type=Path,
-        default=None,
+        # default=None,
+        default=f'{root_path_02}/'
+                # 'train_mmcif_bio/cifs_Nucleic_and_protein',
+                'train_mmcif_bio/cifs_Nucleic_only',
         help="Directory where bioassembly outputs will be saved.",
     )
     parser.add_argument(
         "-c",
         "--cluster_file",
         type=Path,
-        default=None,
+        # default=None,
+        default=f'{root_path_02}/sais_bio/clusters-by-entity-40.txt',
         help="Path to the cluster txt file, if any",
     )
 
@@ -192,7 +203,7 @@ if __name__ == "__main__":
         "-n",
         "--n_cpu",
         type=int,
-        default=1,
+        default=8,
         help="Number of worker processes to use. Defaults to 1.",
     )
 

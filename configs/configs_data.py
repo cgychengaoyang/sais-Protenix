@@ -16,6 +16,7 @@
 import os
 from copy import deepcopy
 
+from my_01_study.utils.root_utils import root_path_02
 from protenix.config.extend_types import GlobalConfigValue, ListValue
 
 default_test_configs = {
@@ -121,7 +122,7 @@ default_weighted_pdb_configs = {
     },
 }
 
-DATA_ROOT_DIR = os.environ.get("PROTENIX_DATA_ROOT_DIR", "/inspire/ssd/project/sais-bio/public/xiangwenkai/GITHUB/Protenix/af3-dev/release_data/")
+DATA_ROOT_DIR = os.environ.get("PROTENIX_DATA_ROOT_DIR", f"{root_path_02}/sais_bio/public/xiangwenkai/GITHUB/Protenix/af3-dev/release_data/")
 
 # Use CCD cache created by scripts/gen_ccd_cache.py priority. (without date in filename)
 # See: docs/prepare_data.md
@@ -159,8 +160,11 @@ if (
     current_file_path = os.path.abspath(__file__)
     current_directory = os.path.dirname(current_file_path)
     code_directory = os.path.dirname(current_directory)
+    print(code_directory)
+    releases_data_ccd_directory = f'{root_path_02}/sais_bio'
 
-    data_cache_dir = os.path.join(code_directory, "release_data/ccd_cache")
+    # data_cache_dir = os.path.join(code_directory, "release_data/ccd_cache")
+    data_cache_dir = os.path.join(releases_data_ccd_directory, "release_data/ccd_cache")
     CCD_COMPONENTS_FILE_PATH = os.path.join(data_cache_dir, "components.cif")
     CCD_COMPONENTS_RDKIT_MOL_FILE_PATH = os.path.join(
         data_cache_dir, "components.cif.rdkit_mol.pkl"
